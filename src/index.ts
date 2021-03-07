@@ -1,4 +1,4 @@
-export function addRomanNumbers(number1: string, number2: string) {
+export function addRomanNumbers(number1: string, number2: string): string {
   let expendedSum = addExpendedRomanNumbers(
     expandRomanNumber(number1),
     expandRomanNumber(number2)
@@ -6,7 +6,7 @@ export function addRomanNumbers(number1: string, number2: string) {
   return canonifyRomanNumber(condenseRomanNumber(expendedSum));
 }
 
-export function expandRomanNumber(number: string) {
+export function expandRomanNumber(number: string): string {
   return number
     .replace('CM', 'DCCCC')
     .replace('CD', 'CCCC')
@@ -16,7 +16,7 @@ export function expandRomanNumber(number: string) {
     .replace('IV', 'IIII');
 }
 
-export function condenseRomanNumber(expNumber: string) {
+export function condenseRomanNumber(expNumber: string): string {
   let candidate = expNumber
     .replace('IIIII', 'V')
     .replace('VV', 'X')
@@ -30,7 +30,7 @@ export function condenseRomanNumber(expNumber: string) {
   return candidate;
 }
 
-export function canonifyRomanNumber(expNumber: string) {
+export function canonifyRomanNumber(expNumber: string): string {
   return expNumber
     .replace('DCCCC', 'CM')
     .replace('CCCC', 'CD')
@@ -40,7 +40,7 @@ export function canonifyRomanNumber(expNumber: string) {
     .replace('IIII', 'IV');
 }
 
-export function addExpendedRomanNumbers(number1: string, number2: string) {
+export function addExpendedRomanNumbers(number1: string, number2: string): string {
   let concatNumbers = number1 + number2;
   let sum =
     (concatNumbers.match(/M+/g) || "").toString().replace(",", "") +
