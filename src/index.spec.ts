@@ -1,38 +1,38 @@
 import {
-  expandRomanNumber,
-  condenseRomanNumber,
   canonifyRomanNumber,
-  addExpendedRomanNumbers,
+  deCanonifyRomanNumber,
+  condenseRomanNumber,
+  addNonCanonicalRomanNumbers,
   addRomanNumbers,
 } from ".";
 
-describe("expandRomanNumber", function () {
+describe("deCanonifyRomanNumber", function () {
 
-  it("expands CXCIX (199)", function () {
-    expect(expandRomanNumber('CXCIX')).toEqual('CLXXXXVIIII');
+  it("decanonify CXCIX (199)", function () {
+    expect(deCanonifyRomanNumber('CXCIX')).toEqual('CLXXXXVIIII');
   });
 
-  it("expands CCCXCVIII (398)", function () {
-    expect(expandRomanNumber('CCCXCVIII')).toEqual('CCCLXXXXVIII');
+  it("decanonify CCCXCVIII (398)", function () {
+    expect(deCanonifyRomanNumber('CCCXCVIII')).toEqual('CCCLXXXXVIII');
   });
 
-  it("expands MMMCMXCIX (3999)", function () {
-    expect(expandRomanNumber('MMMCMXCIX')).toEqual('MMMDCCCCLXXXXVIIII');
+  it("decanonify MMMCMXCIX (3999)", function () {
+    expect(deCanonifyRomanNumber('MMMCMXCIX')).toEqual('MMMDCCCCLXXXXVIIII');
   });
 
 });
 
-describe("symplifyRomanNumber", function () {
+describe("condenseRomanNumber", function () {
 
-  it("symplify 199", function () {
+  it("condense 199", function () {
     expect(condenseRomanNumber('I'.repeat(199))).toEqual('CLXXXXVIIII');
   });
 
-  it("symplify 398", function () {
+  it("condense 398", function () {
     expect(condenseRomanNumber('I'.repeat(398))).toEqual('CCCLXXXXVIII');
   });
 
-  it("symplify 3999", function () {
+  it("condense 3999", function () {
     expect(condenseRomanNumber('I'.repeat(3999))).toEqual('MMMDCCCCLXXXXVIIII');
   });
 
@@ -40,24 +40,24 @@ describe("symplifyRomanNumber", function () {
 
 describe("canonifyRomanNumber", function () {
 
-  it("canonifies 'CLXXXXVIIII' (199)", function () {
+  it("canonify 'CLXXXXVIIII' (199)", function () {
     expect(canonifyRomanNumber('CLXXXXVIIII')).toEqual('CXCIX');
   });
 
-  it("canonifies 'CCCLXXXXVIII' (398)", function () {
+  it("canonify 'CCCLXXXXVIII' (398)", function () {
     expect(canonifyRomanNumber('CCCLXXXXVIII')).toEqual('CCCXCVIII');
   });
 
-  it("canonifies MMMDCCCCLXXXXVIIII (3999)", function () {
+  it("canonify MMMDCCCCLXXXXVIIII (3999)", function () {
     expect(canonifyRomanNumber('MMMDCCCCLXXXXVIIII')).toEqual('MMMCMXCIX');
   });
 
 });
 
-describe("addExpendedRomanNumbers", function () {
+describe("addNonCanonicalRomanNumbers", function () {
 
   it("add 'CLXXXXVIIII' + 'CLXXXXVIIII' (199+199)", function () {
-    expect(addExpendedRomanNumbers('CLXXXXVIIII', 'CLXXXXVIIII')).toEqual('CCLLXXXXXXXXVVIIIIIIII');
+    expect(addNonCanonicalRomanNumbers('CLXXXXVIIII', 'CLXXXXVIIII')).toEqual('CCLLXXXXXXXXVVIIIIIIII');
   });
 
 });
